@@ -1,0 +1,216 @@
+/* Global App Styles */
+:root {
+    /* ☕ PREMIUM CINEMATIC PALETTE (LIGHT) */
+    --primary-color: #38bdf8;
+    /* skyblue accent */
+    --secondary-color: #0ea5e9;
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --bg-primary: #ffffff;
+    --bg-secondary: #f0f9ff;
+    --bg-card: #ffffff;
+    --border-color: #e2e8f0;
+
+    /* LIGHT GRADIENT: White + Skyblue */
+    --app-gradient: linear-gradient(135deg, #ffffff 0%, #bae6fd 100%);
+
+    /* Glassmorphism Refined (Light) */
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(160, 82, 45, 0.2);
+    --glass-hover: rgba(255, 255, 255, 0.9);
+    --glass-blur: blur(12px);
+
+    /* Inputs & UI (Light) */
+    --input-bg: #ffffff;
+    --input-border: #e3c4b8;
+    --input-placeholder: #a0522d80;
+
+    --shadow-sm: 0 1px 2px 0 rgba(74, 38, 20, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(74, 38, 20, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(74, 38, 20, 0.1);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    --radius-sm: 0.375rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 3rem;
+
+    /* Theme Variable for App Background */
+    --app-bg: #ffffff;
+    --galaxy-shade-1: rgba(14, 165, 233, 0.1);
+    --galaxy-shade-2: rgba(56, 189, 248, 0.05);
+    --galaxy-shade-3: rgba(255, 255, 255, 0.5);
+    --blur: blur(10px);
+    --accent-danger: #ef4444;
+    --bg-header: rgba(255, 255, 255, 0.8);
+}
+
+[data-theme='dark'] {
+    /* ☕ PREMIUM CINEMATIC PALETTE (DARK) */
+    --bg-primary: #1a0f0e;
+    /* very dark brown */
+    --bg-secondary: #2d1810;
+    --bg-card: linear-gradient(180deg, rgba(45, 24, 16, 0.9) 0%, rgba(26, 15, 14, 0.95) 100%);
+    --text-primary: #f5ebe0;
+    --text-secondary: #d4a373;
+    --border-color: #4a2c24;
+    --primary-color: #cd4d31;
+    /* reddish accent */
+    --app-bg: #1a0f0e;
+
+    /* DARK GRADIENT: Brown + Reddish */
+    --app-gradient: linear-gradient(135deg, #2d1810 0%, #600c0c 100%);
+
+    /* Glassmorphism Refined (Dark) */
+    --glass-bg: rgba(15, 10, 8, 0.6);
+    --glass-border: rgba(188, 108, 37, 0.15);
+    --glass-hover: rgba(45, 24, 16, 0.8);
+    --glass-blur: blur(16px);
+
+    /* Inputs & UI (Dark) */
+    --input-bg: rgba(26, 18, 14, 0.6);
+    --input-border: #3d241c;
+    --input-placeholder: #d4a37380;
+
+    /* Cinematic Ember Gradient */
+    --galaxy-shade-1: rgba(188, 108, 37, 0.12);
+    --galaxy-shade-2: rgba(96, 44, 33, 0.15);
+    --galaxy-shade-3: rgba(0, 0, 0, 0);
+    --bg-header: rgba(15, 10, 8, 0.8);
+}
+
+.app {
+    min-height: 100vh;
+    background: var(--app-gradient);
+    background-color: var(--app-bg);
+    background-image:
+        radial-gradient(at 0% 0%, var(--galaxy-shade-1) 0, transparent 50%),
+        radial-gradient(at 50% 0%, var(--galaxy-shade-2) 0, transparent 50%),
+        radial-gradient(at 100% 0%, var(--galaxy-shade-3) 0, transparent 50%),
+        radial-gradient(at 0% 50%, var(--galaxy-shade-1) 0, transparent 50%),
+        radial-gradient(at 100% 50%, var(--galaxy-shade-3) 0, transparent 50%),
+        radial-gradient(at 0% 100%, var(--galaxy-shade-2) 0, transparent 50%),
+        radial-gradient(at 100% 100%, var(--galaxy-shade-1) 0, transparent 50%);
+    background-size: 200% 200%;
+    animation: galaxyMove 20s ease infinite;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    transition: background-color 0.8s ease;
+    color: var(--text-primary);
+}
+
+@keyframes galaxyMove {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Theme Toggle Button Styling - PREMIUM CINEMATIC */
+.theme-toggle-btn {
+    display: none !important;
+}
+
+/* Premium Icon-Only (Minimal) Style for Login */
+.theme-toggle-btn.minimal {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    width: auto;
+    height: auto;
+    padding: 0.5rem;
+    color: var(--text-primary);
+    /* Strongest contrast */
+    opacity: 1;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.theme-toggle-btn.minimal:hover {
+    opacity: 1;
+    color: var(--primary-color);
+    background: transparent;
+    transform: rotate(15deg) scale(1.15);
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+@media (max-width: 640px) {
+    .theme-toggle-btn {
+        width: 3rem;
+        height: 3rem;
+        bottom: 1.5rem;
+        right: 1.5rem;
+        border-radius: 0.8rem;
+        backdrop-filter: blur(10px);
+    }
+
+    .theme-toggle-btn.minimal {
+        width: auto;
+        height: auto;
+        padding: 0.8rem;
+        top: 1rem;
+        right: 1rem;
+        bottom: auto;
+        /* Force to top for login flow */
+        filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.25));
+    }
+}
+
+.theme-toggle-btn:hover {
+    transform: scale(1.05);
+    background: var(--bg-card);
+    box-shadow: 0 10px 25px -5px rgba(188, 108, 37, 0.25);
+    border-color: var(--primary-color);
+}
+
+/* Universal Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: var(--text-primary);
+    background-color: var(--bg-secondary);
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* Premium Buttons Styling */
+.btn-premium,
+.login-btn {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%) !important;
+    color: #fff !important;
+    border: none !important;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(188, 108, 37, 0.2);
+    transition: all 0.3s ease;
+}
+
+.btn-premium:hover,
+.login-btn:hover {
+    filter: brightness(1.1);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(188, 108, 37, 0.3);
+}
+
+/* Global transitions for theme changes */
+.transition-theme {
+    transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+}

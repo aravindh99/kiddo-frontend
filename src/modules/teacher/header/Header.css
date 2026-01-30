@@ -1,0 +1,106 @@
+/* =========================
+   HEADER (FLUID & STICKY)
+========================= */
+.app-header {
+  height: clamp(56px, 8vw, 70px);
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 5000;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: clamp(1rem, 5vw, 2.5rem);
+
+  background: var(--bg-secondary);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+
+  /* 🔥 SAFE AREA FIX (iOS notch) */
+  padding-top: env(safe-area-inset-top);
+
+  /* 🔥 PREVENT LAYOUT JUMPS */
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+/* =========================
+   LEFT
+========================= */
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: clamp(10px, 2vw, 14px);
+}
+
+.brand-name {
+  font-size: clamp(16px, 2.4vw, 18px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+/* =========================
+   RIGHT
+========================= */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: clamp(6px, 2vw, 10px);
+}
+
+/* =========================
+   ICON BUTTON
+========================= */
+.icon-btn {
+  position: relative;
+
+  height: clamp(36px, 5vw, 40px);
+  width: clamp(36px, 5vw, 40px);
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 999px;
+  border: none;
+  background: transparent;
+
+  color: var(--text-secondary);
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.15s ease;
+}
+
+.icon-btn:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.icon-btn:active {
+  transform: scale(0.94);
+}
+
+/* =========================
+   NOTIFICATION DOT
+========================= */
+.dot {
+  position: absolute;
+
+  top: clamp(7px, 1.2vw, 9px);
+  right: clamp(7px, 1.2vw, 9px);
+
+  height: clamp(6px, 1vw, 8px);
+  width: clamp(6px, 1vw, 8px);
+
+  background: var(--accent-danger);
+  border-radius: 999px;
+
+  box-shadow: 0 0 0 2px var(--bg-header);
+}

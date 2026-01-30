@@ -1,0 +1,181 @@
+.fab-wrapper {
+  position: fixed;
+  bottom: 100px;
+  /* Safe distance above the bottom tab bar */
+  right: 20px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  pointer-events: auto;
+  /* Enable auto for dragging parent */
+  touch-action: none;
+  /* Required for framer-motion drag on mobile */
+}
+
+.fab-wrapper.open {
+  pointer-events: auto;
+}
+
+/* ================= MAIN FAB ================= */
+.fab-main {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--app-gradient);
+  color: var(--text-primary);
+  border: none;
+  display: grid;
+  place-items: center;
+  box-shadow: var(--shadow-xl);
+  cursor: grab;
+  z-index: 10;
+  border: 1px solid var(--border-color);
+  position: relative;
+}
+
+.fab-main:active {
+  cursor: grabbing;
+}
+
+.fab-main:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 15px 35px rgba(165, 42, 42, 0.5);
+}
+
+.fab-wrapper.open .fab-main {
+  filter: brightness(0.9);
+}
+
+.fab-icon-container {
+  display: grid;
+  place-items: center;
+  transition: transform 0.4s ease;
+}
+
+.fab-wrapper.open .fab-icon-container {
+  transform: rotate(0);
+}
+
+/* ================= ACTION MENU ================= */
+.fab-menu {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 180px;
+  /* Reduced from 250px for compact layout */
+  height: 180px;
+  pointer-events: none;
+}
+
+.fab-action {
+  width: 46px;
+  /* Slightly smaller for mobile professionalism */
+  height: 46px;
+  border-radius: 50%;
+  background: var(--app-gradient);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-lg);
+  cursor: pointer;
+  position: absolute;
+  pointer-events: auto;
+}
+
+/* Phone Ring / Ripple Animation on Icons */
+.fab-action::before,
+.fab-action::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  /* Vibrant Themed Gradient Ripple */
+  background: radial-gradient(circle, var(--primary-color) 0%, transparent 70%);
+  z-index: -1;
+  animation: ring-ripple 2s cubic-bezier(0.23, 1, 0.32, 1) infinite;
+}
+
+.fab-action::after {
+  animation-delay: 1s;
+}
+
+@keyframes ring-ripple {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+/* Arched positions - MUCH tighter for professional mobile grouping */
+.a1 {
+  bottom: 140px;
+  right: 10px;
+}
+
+.a2 {
+  bottom: 105px;
+  right: 60px;
+}
+
+.a3 {
+  bottom: 60px;
+  right: 100px;
+}
+
+.a4 {
+  bottom: 10px;
+  right: 120px;
+}
+
+.fab-wrapper.open .fab-action {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.fab-action:hover {
+  filter: brightness(1.1);
+  transform: scale(1.1) !important;
+  /* Override motion if necessary, though motion handles scale better */
+  border-color: var(--primary-color);
+}
+
+.fab-label {
+  position: absolute;
+  right: 55px;
+  /* Closer labels */
+  background: var(--bg-card);
+  color: var(--text-primary);
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 10px;
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(10px);
+  transition: all 0.2s ease;
+  pointer-events: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Layout adjustments for labels to be on left */
+.a2 .fab-label,
+.a3 .fab-label,
+.a4 .fab-label {
+  right: 55px;
+}
+
+.fab-action:hover .fab-label {
+  opacity: 1;
+  transform: translateX(0);
+}

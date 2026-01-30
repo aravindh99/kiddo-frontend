@@ -1,0 +1,53 @@
+:root {
+  --footer-h: 74px;
+  --bg-footer: var(--bg-secondary);
+  --active: var(--primary-color);
+  --muted: var(--text-secondary);
+}
+
+.parent-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: var(--footer-h);
+  display: flex;
+  background: var(--bg-footer);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid var(--border-color);
+  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.parent-footer button {
+  all: unset;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  cursor: pointer;
+  color: var(--muted);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.parent-footer button span {
+  font-size: var(--f-footer, 11px);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.parent-footer button.active {
+  color: var(--active);
+}
+
+.parent-footer button.active svg {
+  filter: drop-shadow(0 0 8px rgba(0, 229, 255, 0.4));
+}
+
+.parent-footer button:active {
+  transform: scale(0.92);
+  opacity: 0.8;
+}

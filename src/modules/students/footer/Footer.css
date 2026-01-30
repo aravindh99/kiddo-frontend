@@ -1,0 +1,79 @@
+:root {
+  --footer-h: 74px;
+  --bg-footer: var(--bg-secondary);
+  --active: var(--primary-color);
+  --muted: var(--text-secondary);
+  --grad: linear-gradient(135deg, #38bdf8, #0ea5e9);
+}
+
+.student-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: var(--footer-h);
+  display: flex;
+  background: var(--app-gradient);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid var(--border-color);
+  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.05);
+  z-index: 1000;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.student-footer button {
+  all: unset;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  cursor: pointer;
+  color: var(--muted);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.student-footer button span {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.student-footer button.active {
+  color: var(--active);
+}
+
+.student-footer button.active svg {
+  filter: drop-shadow(0 0 8px rgba(0, 229, 255, 0.4));
+}
+
+/* Central Action Button */
+.center-btn {
+  position: relative;
+  z-index: 2;
+}
+
+.center-icon-bg {
+  width: 62px;
+  height: 62px;
+  background: var(--grad);
+  border-radius: 22px;
+  /* Modern Squircle */
+  display: grid;
+  place-items: center;
+  transform: translateY(-2px);
+  /* Lowered further for elite balance */
+  box-shadow: 0 8px 25px rgba(124, 77, 255, 0.3);
+  transition: all 0.3s ease;
+  border: 4px solid var(--bg-footer);
+}
+
+.center-btn:hover .center-icon-bg {
+  transform: translateY(-16px) scale(1.05);
+  box-shadow: 0 12px 30px rgba(124, 77, 255, 0.6);
+}
+
+.center-btn.active .center-icon-bg {
+  box-shadow: 0 0 20px rgba(0, 210, 255, 0.4);
+}

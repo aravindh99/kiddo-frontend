@@ -1,0 +1,195 @@
+.teacher-timetable-container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.timetable-header {
+    margin-bottom: 24px;
+}
+
+.timetable-header h1 {
+    font-size: clamp(24px, 5vw, 32px);
+    font-weight: 800;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, #0d9488, #22d3ee);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.timetable-config {
+    margin-bottom: 24px;
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.config-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+}
+
+.glass-select {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.select-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.select-trigger {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 12px 16px;
+    border-radius: 12px;
+    color: var(--text-primary);
+    font-size: 14px;
+    font-weight: 600;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.timetable-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.day-section {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.day-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+    text-transform: capitalize;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.day-title::before {
+    content: '';
+    display: block;
+    width: 4px;
+    height: 20px;
+    background: #0d9488;
+    border-radius: 2px;
+}
+
+.entries-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 12px;
+}
+
+.entry-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 18px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+}
+
+.entry-card:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(13, 148, 136, 0.3);
+}
+
+.entry-card.is-break {
+    background: rgba(13, 148, 136, 0.05);
+    border: 1px dashed rgba(13, 148, 136, 0.2);
+}
+
+.time-slot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 90px;
+    padding-right: 18px;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.start-time {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--text-primary);
+}
+
+.end-time {
+    font-size: 12px;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.entry-info {
+    flex: 1;
+}
+
+.entry-info h4 {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: var(--text-primary);
+}
+
+.entry-info p {
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.loading-state,
+.error-state,
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 350px;
+    text-align: center;
+    gap: 20px;
+}
+
+.retry-btn {
+    padding: 10px 24px;
+    background: #0d9488;
+    color: white;
+    border-radius: 30px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: filter 0.2s ease;
+}
+
+.retry-btn:hover {
+    filter: brightness(1.1);
+}
+
+@media (max-width: 600px) {
+    .entries-list {
+        grid-template-columns: 1fr;
+    }
+}

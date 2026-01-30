@@ -1,0 +1,98 @@
+/* ============================= */
+/* ROOT VARIABLES */
+/* ============================= */
+:root {
+  --footer-h: clamp(64px, 8vw, 72px);
+  --icon: clamp(20px, 5vw, 24px);
+
+  --bg-gradient: linear-gradient(135deg,
+      var(--bg-secondary),
+      var(--bg-secondary) 40%,
+      var(--bg-secondary));
+
+  --active: var(--primary-color);
+  --text: var(--text-primary);
+  --muted: var(--text-secondary);
+}
+
+/* ============================= */
+/* FOOTER WRAPPER */
+/* ============================= */
+.teacher-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--bg-secondary);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid var(--border-color);
+  z-index: 200;
+  padding: 0.75rem 0;
+}
+
+/* ============================= */
+/* NAV */
+/* ============================= */
+.teacher-footer__nav {
+  height: 100%;
+  display: flex;
+}
+
+/* ============================= */
+/* LINKS */
+/* ============================= */
+.footer-link {
+  all: unset;
+  width: 20%;
+  height: 100%;
+  cursor: pointer;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+
+  color: var(--muted);
+  transition: all 0.25s ease;
+}
+
+/* ============================= */
+/* ICON */
+/* ============================= */
+.footer-link svg {
+  font-size: var(--icon);
+}
+
+/* ============================= */
+/* LABEL */
+/* ============================= */
+.footer-link span {
+  font-size: clamp(0.65rem, 2.5vw, 0.75rem);
+}
+
+/* ============================= */
+/* HOVER */
+/* ============================= */
+.footer-link:hover {
+  color: var(--text);
+}
+
+/* ============================= */
+/* ACTIVE */
+/* ============================= */
+.footer-link.active {
+  color: var(--active);
+}
+
+/* ============================= */
+/* CENTER ACTION (HIGHLIGHT) */
+/* ============================= */
+.footer-link.center {
+  transform: translateY(-6px) scale(1.15);
+  color: #ffffff;
+}
+
+.footer-link.center.active {
+  color: var(--active);
+}

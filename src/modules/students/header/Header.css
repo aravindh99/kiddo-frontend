@@ -1,0 +1,136 @@
+/* =========================
+   HEADER (CLAMP + SAFE)
+========================= */
+.app-header {
+  height: clamp(56px, 6vw, 64px);
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding-inline: clamp(16px, 4vw, 24px);
+
+  /* 🔥 SAFE AREA FIX (iOS notch) */
+  padding-top: env(safe-area-inset-top);
+  padding-left: calc(clamp(16px, 4vw, 24px) + env(safe-area-inset-left));
+  padding-right: calc(clamp(16px, 4vw, 24px) + env(safe-area-inset-right));
+
+  background: var(--bg-header);
+  backdrop-filter: var(--blur);
+  -webkit-backdrop-filter: var(--blur);
+
+  border-bottom: 1px solid var(--border-color);
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 5000;
+
+  /* 🔥 PREVENT LAYOUT JUMPS */
+  flex-shrink: 0;
+}
+
+/* =========================
+   LEFT
+========================= */
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: clamp(10px, 2vw, 14px);
+}
+
+.brand-name {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+/* =========================
+   RIGHT
+========================= */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: clamp(6px, 2vw, 10px);
+}
+
+/* =========================
+   ICON BUTTON
+========================= */
+.icon-btn {
+  position: relative;
+
+  height: clamp(36px, 5vw, 40px);
+  width: clamp(36px, 5vw, 40px);
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 999px;
+  border: none;
+  background: transparent;
+
+  color: var(--text-secondary);
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.15s ease;
+}
+
+.icon-btn:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.icon-btn:active {
+  transform: scale(0.94);
+}
+
+/* =========================
+   NOTIFICATION DOT
+========================= */
+.dot {
+  position: absolute;
+
+  top: clamp(7px, 1.2vw, 9px);
+  right: clamp(7px, 1.2vw, 9px);
+
+  height: clamp(6px, 1vw, 8px);
+  width: clamp(6px, 1vw, 8px);
+
+  background: var(--accent-danger);
+  border-radius: 999px;
+
+  box-shadow: 0 0 0 2px var(--bg-header);
+}
+
+/* =========================
+   THEME ICON FIX
+========================= */
+.theme-fix-btn {
+  margin-right: 4px;
+}
+
+[data-theme='light'] .moon-icon {
+  display: none;
+}
+
+[data-theme='dark'] .sun-icon {
+  display: none;
+}
+
+[data-theme='light'] .sun-icon {
+  color: #f59e0b;
+}
+
+/* Professional amber */
+[data-theme='dark'] .moon-icon {
+  color: #38bdf8;
+}
+
+/* Professional skyblue */

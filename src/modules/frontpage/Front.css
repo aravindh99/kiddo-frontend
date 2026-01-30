@@ -1,0 +1,219 @@
+/* ========================= */
+/* THEME VARIABLES */
+/* ========================= */
+:root {
+  --text-title: #ffffff;
+  --text-sub: rgba(255, 255, 255, 0.85);
+
+  /* Button */
+  --btn-primary: #38bdf8;
+  --btn-secondary: #0ea5e9;
+
+  --btn-shadow: rgba(14, 165, 233, 0.4);
+  --btn-shadow-hover: rgba(14, 165, 233, 0.6);
+}
+
+/* ========================= */
+/* RESET */
+/* ========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: "Inter", system-ui, sans-serif;
+  background: transparent;
+}
+
+/* ========================= */
+/* HERO CONTAINER */
+/* ========================= */
+.hero-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: transparent;
+
+  animation: pageReveal 1.2s ease-out forwards;
+}
+
+/* ========================= */
+/* BACKGROUND IMAGE (ONLY VISIBLE LAYER) */
+/* ========================= */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 1;
+}
+
+/* ========================= */
+/* OVERLAY (REMOVED) */
+/* ========================= */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: transparent;
+  z-index: 2;
+}
+
+/* ========================= */
+/* CONTENT */
+/* ========================= */
+/* ========================= */
+/* CONTENT */
+/* ========================= */
+.hero-content {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  text-align: center;
+
+  padding-bottom: 220px;
+  /* Kept button high as requested previously */
+  padding-inline: 24px;
+
+  animation: contentFadeUp 1s ease forwards;
+}
+
+/* ========================= */
+/* TEXT */
+/* ========================= */
+.title {
+  font-size: clamp(36px, 6vw, 72px);
+  line-height: 1.1;
+  /* Tighter line height for 2 lines */
+  font-weight: 900;
+  color: #ffffff;
+  margin-bottom: 30px;
+  /* Reduced gap to bring button closer but not touching */
+  letter-spacing: -0.04em;
+  text-transform: capitalize;
+
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+
+  animation: fadeUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* ========================= */
+/* GET STARTED BUTTON */
+/* ========================= */
+.start-btn {
+  height: 56px;
+  padding: 0 54px;
+  border-radius: 30px;
+  border: none;
+
+  background: linear-gradient(135deg,
+      var(--btn-primary),
+      var(--btn-secondary));
+
+  color: #ffffff;
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+
+  box-shadow: 0 16px 34px var(--btn-shadow);
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    filter 0.35s ease;
+
+  animation:
+    fadeUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards,
+    float 4s ease-in-out 1.2s infinite;
+  animation-delay: 0.2s, 1s;
+  /* Faster sequence since subtitle is gone */
+  opacity: 0;
+}
+
+.start-btn:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 22px 48px var(--btn-shadow-hover);
+  filter: brightness(1.05);
+}
+
+.start-btn:active {
+  transform: scale(0.95);
+}
+
+/* ========================= */
+/* ANIMATIONS */
+/* ========================= */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes pageReveal {
+  from {
+    opacity: 0;
+    transform: scale(1.02);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes contentFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========================= */
+/* MOBILE */
+/* ========================= */
+@media (max-width: 480px) {
+  .hero-content {
+    padding-bottom: 60px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+  }
+}

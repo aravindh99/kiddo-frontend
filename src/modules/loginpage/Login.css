@@ -1,0 +1,311 @@
+/* ===============================
+   THEME TOKENS (Consolidated with Global)
+================================ */
+:root {
+  /* 🌤 LIGHT THEME (Using Global for consistency) */
+  --bg-main: var(--bg-secondary);
+  --panel-bg: var(--bg-primary);
+  --border-color: var(--input-border);
+
+  --text-main: var(--text-primary);
+  --text-muted: var(--text-secondary);
+
+  /* Default button gradient (Student orange) */
+  --btn-from: #f97316;
+  --btn-to: #ea580c;
+}
+
+[data-theme="dark"] {
+  /* 🌙 DARK THEME (Using Global for consistency) */
+  --bg-main: var(--bg-primary);
+  --panel-bg: var(--bg-secondary);
+  --border-color: var(--border-color);
+
+  --text-main: var(--text-primary);
+  --text-muted: var(--text-secondary);
+}
+
+/* ===============================
+   PAGE LAYOUT
+================================ */
+.login-layout {
+  height: 100svh;
+  background: transparent;
+  font-family: "Manrope", system-ui, sans-serif;
+  overflow: hidden;
+}
+
+/* ===============================
+   ROBOT ZONE
+================================ */
+.robot-zone {
+  width: 100%;
+  height: clamp(52vh, 58vh, 62vh);
+  position: relative;
+  overflow: hidden;
+}
+
+.robot-zone::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: clamp(64px, 80px, 96px);
+  background: linear-gradient(to bottom,
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 0.35));
+  pointer-events: none;
+}
+
+/* ===============================
+   LOGIN ZONE
+================================ */
+.login-zone {
+  position: relative;
+  z-index: 10;
+  margin-top: -80px;
+  /* Lifts card higher to fit everything without scroll */
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  /* Match remaining height */
+  overflow: hidden;
+  /* Prevent parent scroll */
+}
+
+.login-content {
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.7);
+  /* Glassy effect */
+  backdrop-filter: blur(20px);
+  padding: 24px 30px;
+  /* Tighter padding */
+  border-radius: 32px 32px 0 0;
+  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  overflow: hidden;
+  /* Strictly no scroll */
+  height: 100%;
+}
+
+.login-content::-webkit-scrollbar {
+  display: none;
+}
+
+/* ===============================
+   ROLE SELECTOR (PILL STYLE)
+================================ */
+.role-row {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.4);
+  /* Cleaner, less dark */
+  border-radius: 40px;
+  /* Pill shape */
+  max-width: 360px;
+  margin: 16px auto;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+}
+
+.role-btn {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 12px 16px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-muted);
+  border-radius: 30px;
+  /* Pill shape */
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.2, 0, 0.2, 1);
+  white-space: nowrap;
+  touch-action: manipulation;
+  will-change: transform, background;
+  /* Faster rendering */
+}
+
+.role-btn.active {
+  background: linear-gradient(135deg, var(--btn-from), var(--btn-to));
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: scale(1.05);
+}
+
+/* ===============================
+   TEXT
+================================ */
+.login-content h2 {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 24px;
+  /* Balanced spacing now that subtitle is gone */
+  letter-spacing: -0.02em;
+}
+
+/* ===============================
+   INPUTS (PILL STYLE)
+================================ */
+.input-group {
+  margin-bottom: 12px;
+}
+
+.input-box {
+  display: flex;
+  align-items: center;
+  height: 56px;
+  padding: 0 24px;
+  border-radius: 30px;
+  /* Pill shape */
+  background: rgba(255, 255, 255, 0.5);
+  /* Less dark */
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  gap: 12px;
+  transition: all 0.3s ease;
+  will-change: transform, border-color;
+  touch-action: manipulation;
+}
+
+.input-box:focus-within {
+  background: #ffffff;
+  border-color: var(--btn-from);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+  transform: translateY(-1px);
+}
+
+.input-box input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  background: transparent;
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+.input-box svg {
+  color: var(--text-muted);
+  font-size: 20px;
+}
+
+.eye-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  transition: transform 0.2s ease;
+  touch-action: manipulation;
+}
+
+.eye-btn:hover {
+  color: var(--btn-from);
+}
+
+.eye-btn:active {
+  transform: scale(0.9);
+}
+
+/* ===============================
+   ROLE ACCENT COLORS (CLEAN)
+================================ */
+/* Hardened Theme Tokens for appeal */
+.role-student {
+  --btn-from: #38bdf8;
+  /* Skyblue from front page for unity */
+  --btn-to: #0ea5e9;
+}
+
+.role-parent {
+  --btn-from: #10b981;
+  --btn-to: #059669;
+}
+
+.role-teacher {
+  --btn-from: #6366f1;
+  --btn-to: #4f46e5;
+}
+
+/* ===============================
+   LOGIN BUTTON (PILL STYLE)
+================================ */
+.login-btn {
+  width: 100%;
+  height: 62px;
+  border: none;
+  border-radius: 40px;
+  /* Pill shape */
+
+  background: linear-gradient(135deg, var(--btn-from), var(--btn-to));
+
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-align: center;
+
+  margin-top: 12px;
+  cursor: pointer;
+
+  box-shadow: 0 12px 30px -8px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s cubic-bezier(0.2, 0, 0.2, 1);
+
+  will-change: transform, box-shadow;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.login-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+  box-shadow: 0 15px 35px -8px rgba(0, 0, 0, 0.4);
+}
+
+.login-btn:active {
+  transform: scale(0.97);
+  filter: brightness(0.95);
+}
+
+/* ===============================
+   THEME TOGGLE (PRO ICON)
+================================ */
+.theme-toggle {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+
+  background: var(--panel-bg);
+  border: 1px solid var(--border-color);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--text-main);
+  cursor: pointer;
+
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+  transition: all 0.25s ease;
+  z-index: 20;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-1px);
+}

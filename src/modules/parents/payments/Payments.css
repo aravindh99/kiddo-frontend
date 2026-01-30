@@ -1,0 +1,602 @@
+:root {
+    --table-bg: #0b0f1a;
+    --border: rgba(255, 255, 255, 0.06);
+    --text: #e2e8f0;
+    --text-muted: #94a3b8;
+    --accent: #00e5ff;
+    --red: #ff3d71;
+    --green: #00e096;
+    --glass: rgba(255, 255, 255, 0.02);
+}
+
+.payments-page {
+    background: #060b1a;
+    /* Pitch dark premium */
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
+}
+
+.scroll-wrapper {
+    padding: 12px;
+    height: calc(100vh - 64px - 70px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    margin-top: 64px;
+}
+
+.scroll-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+/* BRIEF CARDS */
+.fee-brief-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.brief-card {
+    background: var(--glass);
+    border: 1px solid var(--border);
+    padding: 10px 12px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.brief-card.pending .b-icon {
+    background: rgba(255, 61, 113, 0.1);
+    color: var(--red);
+}
+
+.brief-card.due .b-icon {
+    background: rgba(0, 229, 255, 0.1);
+    color: var(--accent);
+}
+
+.b-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+}
+
+.b-info span {
+    font-size: 8px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    opacity: 0.6;
+}
+
+.b-info strong {
+    font-size: 14px;
+    display: block;
+    font-weight: 800;
+}
+
+.b-info small {
+    font-size: 8px;
+    color: var(--text-muted);
+}
+
+/* TABS */
+.tab-switcher {
+    display: flex;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 3px;
+    border-radius: 12px;
+    gap: 3px;
+    margin-bottom: 14px;
+}
+
+.tab-switcher button {
+    all: unset;
+    flex: 1;
+    padding: 8px;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--text-muted);
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.tab-switcher button.active {
+    background: var(--accent);
+    color: #000;
+}
+
+/* TABLE */
+.excel-table-section {
+    background: var(--table-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 16px;
+}
+
+.table-header-box {
+    padding: 10px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.01);
+}
+
+.table-header-box h3 {
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+}
+
+.download-btn {
+    all: unset;
+    font-size: 8px;
+    font-weight: 800;
+    background: var(--accent);
+    color: #000;
+    padding: 3px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.table-scroll-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    position: relative;
+    border-radius: 0 0 16px 16px;
+}
+
+.table-scroll-container::-webkit-scrollbar {
+    height: 4px;
+}
+
+.table-scroll-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.table-scroll-container::-webkit-scrollbar-thumb {
+    background: rgba(0, 229, 255, 0.2);
+    border-radius: 10px;
+}
+
+.fees-excel-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9px;
+    white-space: nowrap;
+    min-width: 800px;
+    /* Force overflow on smaller screens */
+}
+
+.fees-excel-table th,
+.fees-excel-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+}
+
+.fees-excel-table th {
+    background: rgba(255, 255, 255, 0.02);
+    color: var(--text-muted);
+    font-size: 8px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.sticky-col {
+    position: sticky;
+    left: 0;
+    background: #0d121f !important;
+    /* Slightly lighter than table-bg for depth */
+    z-index: 20;
+    border-right: 2px solid var(--accent) !important;
+    /* Prominent accent line */
+    box-shadow: 10px 0 15px -10px rgba(0, 0, 0, 0.8);
+}
+
+.fees-excel-table th.sticky-col {
+    z-index: 30;
+    background: #1a2235 !important;
+}
+
+.swipe-hint {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 6px;
+    background: rgba(0, 229, 255, 0.05);
+    border-radius: 8px;
+    margin-bottom: 8px;
+    color: var(--accent);
+    font-size: 8px;
+    font-weight: 700;
+    animation: pulse-swipe 2s infinite;
+}
+
+@keyframes pulse-swipe {
+    0% {
+        opacity: 0.5;
+        transform: translateX(0);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateX(5px);
+    }
+
+    100% {
+        opacity: 0.5;
+        transform: translateX(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .swipe-hint {
+        display: flex;
+    }
+}
+
+.total-col {
+    background: rgba(0, 229, 255, 0.02);
+}
+
+.mark-col {
+    text-align: center;
+}
+
+.mark-icon.check {
+    color: var(--green);
+}
+
+.mark-icon.wrong {
+    color: var(--red);
+}
+
+.pay-btn-mini {
+    background: var(--red);
+    color: white;
+    border: none;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 8px;
+    font-weight: 900;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(255, 61, 113, 0.3);
+}
+
+.settled-txt {
+    font-size: 8px;
+    font-weight: 800;
+    color: var(--green);
+    opacity: 0.6;
+}
+
+.upcoming-txt {
+    font-size: 8px;
+    font-weight: 800;
+    color: var(--text-muted);
+    opacity: 0.3;
+}
+
+/* HISTORY list */
+.history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.history-card {
+    background: var(--glass);
+    border: 1px solid var(--border);
+    padding: 10px 12px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.h-main {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.h-icon {
+    width: 30px;
+    height: 30px;
+    background: rgba(0, 224, 150, 0.1);
+    color: var(--green);
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+}
+
+.h-info strong {
+    font-size: 10px;
+    display: block;
+}
+
+.h-info p {
+    font-size: 8px;
+    color: var(--text-muted);
+}
+
+.h-amount {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--accent);
+}
+
+.txn-id {
+    font-size: 7px;
+    color: var(--text-muted);
+    opacity: 0.5;
+    display: block;
+}
+
+/* INSTRUCTIONS */
+.parent-instructions-section {
+    background: rgba(255, 255, 255, 0.01);
+    padding: 12px;
+    border-radius: 14px;
+    border: 1px dashed var(--border);
+    margin-top: 10px;
+}
+
+.instr-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--accent);
+    margin-bottom: 8px;
+}
+
+.instr-header h4 {
+    font-size: 9px;
+    font-weight: 800;
+}
+
+.instr-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.instr-list li {
+    display: flex;
+    gap: 6px;
+}
+
+.instr-dot {
+    width: 3px;
+    height: 3px;
+    background: var(--accent);
+    border-radius: 50%;
+    margin-top: 4px;
+}
+
+.instr-list p {
+    font-size: 8.5px;
+    line-height: 1.3;
+    color: var(--text-muted);
+}
+
+/* PREMIUM BOTTOM SHEET MODAL */
+.payment-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+    display: flex;
+    align-items: flex-end;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.payment-modal-overlay.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.payment-bottom-sheet {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    background: #0f172a;
+    border-top: 1px solid var(--border);
+    border-radius: 24px 24px 0 0;
+    padding: 20px;
+    transform: translateY(100%);
+    transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.payment-modal-overlay.active .payment-bottom-sheet {
+    transform: translateY(0);
+}
+
+.modal-handle {
+    width: 40px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    margin: -8px auto 16px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.modal-header h3 {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--text);
+}
+
+.modal-header p {
+    font-size: 10px;
+    color: var(--text-muted);
+}
+
+.close-x {
+    all: unset;
+    color: var(--text-muted);
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* INVOICE CARD */
+.checkout-summary-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border);
+    padding: 14px;
+    border-radius: 16px;
+    margin-bottom: 20px;
+}
+
+.cs-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+}
+
+.cs-label {
+    font-size: 8px;
+    font-weight: 700;
+    color: var(--text-muted);
+}
+
+.cs-value {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.cs-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 8px 0;
+}
+
+.cs-row.total .cs-label {
+    color: var(--accent);
+    font-size: 9px;
+}
+
+.cs-row.total .cs-value {
+    color: var(--accent);
+    font-size: 15px;
+    font-weight: 900;
+}
+
+/* UPI GRID */
+.selector-title {
+    font-size: 9px;
+    font-weight: 800;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+    letter-spacing: 0.05em;
+}
+
+.upi-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.upi-tile {
+    all: unset;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border);
+    padding: 12px 6px;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: 0.2s;
+    position: relative;
+}
+
+.upi-tile:active {
+    transform: scale(0.95);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.upi-tile-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    font-size: 14px;
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 6px;
+}
+
+.upi-tile span {
+    font-size: 8px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-align: center;
+}
+
+.ext-icon {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    opacity: 0.3;
+}
+
+/* CARD BUTTON */
+.card-payment-btn {
+    width: 100%;
+    background: transparent;
+    border: 1px solid var(--border);
+    padding: 12px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: var(--text-muted);
+    font-size: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.modal-security {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: 9px;
+    color: var(--text-muted);
+    opacity: 0.5;
+}

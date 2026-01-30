@@ -1,0 +1,322 @@
+/* ============================= */
+/* ELITE PARENT DIARY UI */
+/* ============================= */
+.diary {
+  height: 100vh;
+  background: radial-gradient(circle at 50% 0%, var(--bg-secondary), var(--bg-primary) 70%);
+  color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.diary-scroll {
+  flex: 1;
+  overflow-y: hidden;
+  /* Prevent scrolling for "one-page" feel */
+  padding: calc(clamp(48px, 5vw, 56px) + env(safe-area-inset-top) + 12px) 16px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  /* Tighter gap */
+  scroll-behavior: smooth;
+  padding-bottom: 120px;
+  /* Reduced clearance */
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ============================= */
+/* PREMIUM BRAND HEADER */
+/* ============================= */
+.diary-header-premium {
+  padding-bottom: 8px;
+}
+
+.diary-brand-section {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.diary-icon-orb {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, rgba(0, 229, 255, 0.15), rgba(58, 123, 213, 0.15));
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(0, 229, 255, 0.25);
+}
+
+.diary-meta-text h1 {
+  font-size: var(--f-h1);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: var(--text-primary);
+}
+
+.diary-meta-text p {
+  font-size: var(--f-sm);
+  color: var(--text-secondary);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-top: 1px;
+}
+
+/* ============================= */
+/* PROFESSIONAL TAB SWITCHER */
+/* ============================= */
+.tab-switcher-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--glass-bg);
+  padding: 6px;
+  border-radius: 18px;
+  border: 1px solid var(--border-color);
+  backdrop-filter: blur(10px);
+}
+
+.tab-btn {
+  all: unset;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px;
+  font-size: var(--f-btn);
+  font-weight: 700;
+  color: #94a3b8;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tab-btn.active {
+  background: var(--glass-hover);
+  color: #00e5ff;
+  box-shadow: 0 4px 15px rgba(0, 229, 255, 0.15);
+}
+
+.tab-btn.active.pink {
+  color: #f472b6;
+  box-shadow: 0 4px 15px rgba(244, 114, 182, 0.15);
+}
+
+/* ============================= */
+/* TIMELINE SECTION */
+/* ============================= */
+.timeline-section {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.timeline-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-bottom: 6px;
+}
+
+.timeline-info h2 {
+  font-size: var(--f-h2);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+}
+
+.timeline-info p {
+  font-size: var(--f-sm);
+  color: var(--text-secondary);
+  font-weight: 700;
+  margin-top: 2px;
+}
+
+.task-count {
+  font-size: 11px;
+  font-weight: 800;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.12);
+  padding: 4px 14px;
+  border-radius: 99px;
+  border: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+.tasks-container {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ============================= */
+/* ELITE TASK CARDS */
+/* ============================= */
+.diary-task-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s ease;
+}
+
+.diary-task-card:active {
+  transform: scale(0.98);
+}
+
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.subject-name {
+  font-weight: 900;
+  font-size: 14px;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+.teacher-name {
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.task-desc {
+  font-size: var(--f-body);
+  color: var(--text-primary);
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.task-footer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-weight: 700;
+  background: var(--glass-bg);
+  align-self: flex-start;
+  padding: 6px 12px;
+  border-radius: 10px;
+}
+
+/* Subject Left Indicators */
+.diary-task-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 25%;
+  height: 50%;
+  width: 4px;
+  border-radius: 0 4px 4px 0;
+}
+
+.diary-task-card.maths::before {
+  background: #38bdf8;
+}
+
+.diary-task-card.science::before {
+  background: #4ade80;
+}
+
+.diary-task-card.english::before {
+  background: #f472b6;
+}
+
+.diary-task-card.social::before {
+  background: #fbbf24;
+}
+
+.diary-task-card.hindi::before {
+  background: #a78bfa;
+}
+
+/* ============================= */
+/* ANNOUNCEMENT CARDS */
+/* ============================= */
+.announcement-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.announcement-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 22px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.a-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.a-top h3 {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.a-date {
+  font-size: 11px;
+  color: #64748b;
+  font-weight: 700;
+}
+
+.a-desc {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.a-footer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #00e5ff;
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+.announcement-card.high {
+  border-color: rgba(244, 114, 182, 0.2);
+  background: linear-gradient(135deg, rgba(244, 114, 182, 0.05), rgba(255, 255, 255, 0.02));
+}
+
+.announcement-card.high h3 {
+  color: #f472b6;
+}
+
+/* FADE ANIMATIONS */
+.diary-content-fade,
+.announcements-content-fade {
+  animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

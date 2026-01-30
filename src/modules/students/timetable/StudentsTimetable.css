@@ -1,0 +1,147 @@
+.timetable-container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.timetable-header {
+    margin-bottom: 24px;
+}
+
+.timetable-header h1 {
+    font-size: clamp(24px, 5vw, 32px);
+    font-weight: 800;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, var(--brand-blue), var(--brand-purple));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.timetable-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.day-section {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.day-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+    text-transform: capitalize;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.day-title::before {
+    content: '';
+    display: block;
+    width: 4px;
+    height: 20px;
+    background: var(--brand-blue);
+    border-radius: 2px;
+}
+
+.entries-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 12px;
+}
+
+.entry-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 16px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: transform 0.2s ease, background 0.2s ease;
+    border: 1px solid transparent;
+}
+
+.entry-card:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.entry-card.is-break {
+    background: rgba(var(--brand-purple-rgb), 0.1);
+    border: 1px dashed rgba(var(--brand-purple-rgb), 0.3);
+}
+
+.time-slot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 80px;
+    padding-right: 16px;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.start-time {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.end-time {
+    font-size: 11px;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.entry-info {
+    flex: 1;
+}
+
+.entry-info h4 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 2px;
+    color: var(--text-primary);
+}
+
+.entry-info p {
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.loading-state,
+.error-state,
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    text-align: center;
+    gap: 16px;
+}
+
+.retry-btn {
+    padding: 8px 20px;
+    background: var(--brand-blue);
+    color: white;
+    border-radius: 30px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+}
+
+@media (max-width: 600px) {
+    .entries-list {
+        grid-template-columns: 1fr;
+    }
+}
